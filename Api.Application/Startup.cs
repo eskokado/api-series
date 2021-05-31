@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Api.Domain.Security;
 using Api.Infra.CrossCutting.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
 
 namespace application
 {
@@ -55,7 +57,45 @@ namespace application
                 auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
                 .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                 .RequireAuthenticatedUser().Build());
-            });            
+            });
+
+            services.AddSwaggerGen(c => 
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "API Cadastro de Series com AspNetCore 3.1 - Na Prática",
+                    Description = "Arquitetura DDD",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Edson Shideki Kokado",
+                        Email = "eskokado@gmail.com",
+                        Url = new System.Uri("https://www.linkedin.com/in/edson-shideki-kokado-54253887/")
+                    }
+                });
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "Entre com o Token JWT",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme 
+                        {
+                        Reference = new OpenApiReference
+                        {
+                            Id = "Bearer",
+                            Type = ReferenceType.SecurityScheme
+                        }
+                        }, new List<string>()
+                    }
+                });
+            });
 
             services.AddControllers();
             services.AddSwaggerGen();
