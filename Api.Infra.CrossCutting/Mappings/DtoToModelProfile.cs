@@ -8,7 +8,9 @@ namespace Api.Infra.CrossCutting.Mappings
     {
         public DtoToModelProfile()
         {
-            CreateMap<UserModel, UserDto>()
+            CreateMap<UserModel, UserDtoCreate>()
+                .ReverseMap();
+            CreateMap<UserModel, UserDtoUpdate>()
                 .ReverseMap();
         }
     }
