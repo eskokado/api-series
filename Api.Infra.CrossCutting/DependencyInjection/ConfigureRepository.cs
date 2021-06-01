@@ -15,7 +15,11 @@ namespace Api.Infra.CrossCutting.DependencyInjection
             serviceCollection.AddScoped<IUserRepository, UserImplementation>();
             
             serviceCollection.AddDbContext<MyContext> (
-                options => options.UseMySql("Server=localhost;Port=3306;Database=dbApiSeries;Uid=root;Pwd=root")
+                options => 
+                
+                // options.UseMySql("Server=localhost;Port=3306;Database=dbApiSeries;Uid=root;Pwd=root")
+                options
+                    .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=dbApiSeries;Trusted_Connection=True;MultipleActiveResultSets=true;user=sa;password=sa@123456")
             );
         }        
     }

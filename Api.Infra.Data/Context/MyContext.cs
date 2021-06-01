@@ -1,3 +1,4 @@
+using System;
 using Api.Domain.Entities;
 using Api.Infra.Data.Mapping;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,16 @@ namespace Api.Infra.Data.Context
         protected override void OnModelCreating (ModelBuilder modelBuilder) {
             base.OnModelCreating (modelBuilder);
             modelBuilder.Entity<UserEntity> (new UserMap().Configure);
+
+            modelBuilder
+                .Entity<UserEntity>()
+                .HasData(new UserEntity {
+                    Id = Guid.NewGuid(),
+                    Name = "Edson Shideki Kokado",
+                    Email = "esk@email.com",
+                    CreateAt = DateTime.Now,
+                    UpdateAt = DateTime.Now
+                });
         }
     }
 }
