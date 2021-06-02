@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
 
-namespace Api.Application.Test.User.WhenToRequestUpdate
+namespace Api.Application.Test.User.WhenToRequestDelete
 {
     public class ReturnDeleted
     {
