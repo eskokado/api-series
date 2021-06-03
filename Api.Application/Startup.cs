@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Api.Domain.Security;
 using Api.Infra.CrossCutting.DependencyInjection;
@@ -17,20 +18,34 @@ namespace application
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
+            _environment = environment;
         }
 
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment _environment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            if (_environment.IsEnvironment("Testing"))
+            {
+                // Environment.SetEnvironmentVariable("DB_CONNECTION","Persist Security Info=True;Server=localhost;Port=3306;Database=dbApiCourseCsharp_Integration;Uid=root;Pwd=root");
+                // Environment.SetEnvironmentVariable("DATABASE","MYSQL");
+                Environment.SetEnvironmentVariable("DB_CONNECTION", "Persist Security Info=True;Server=(localdb)\\mssqllocaldb;Database=dbApiSeries_Integration;Trusted_Connection=True;MultipleActiveResultSets=true;user=sa;password=sa@123456");
+                Environment.SetEnvironmentVariable("DATABASE", "SQLSERVER");
+                Environment.SetEnvironmentVariable("MIGRATION", "APLICAR");
+                Environment.SetEnvironmentVariable("Audience", "ExampleApiSeriesAudience");
+                Environment.SetEnvironmentVariable("Issuer", "ExampleApiSeriesIssuer");
+                Environment.SetEnvironmentVariable("Seconds", "28880");
+
+            }
             ConfigureService.ConfigureDependenciesService(services);
             ConfigureRepository.ConfigureDependenciesRepository(services);
 
-            var config = new AutoMapper.MapperConfiguration(cfg => 
+            var config = new AutoMapper.MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new DtoToModelProfile());
                 cfg.AddProfile(new EntityToDtoProfile());
@@ -50,11 +65,11 @@ namespace application
             services.AddSingleton(tokenConfigurations);
 
 
-            services.AddAuthentication(authOptions => 
+            services.AddAuthentication(authOptions =>
             {
                 authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(bearerOptions => 
+            }).AddJwtBearer(bearerOptions =>
             {
                 var paramsValidation = bearerOptions.TokenValidationParameters;
                 paramsValidation.IssuerSigningKey = signingConfigurations.Key;
@@ -64,14 +79,14 @@ namespace application
                 paramsValidation.ValidateLifetime = true;
             });
 
-            services.AddAuthorization(auth => 
+            services.AddAuthorization(auth =>
             {
                 auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
                 .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                 .RequireAuthenticatedUser().Build());
             });
 
-            services.AddSwaggerGen(c => 
+            services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
@@ -97,7 +112,7 @@ namespace application
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
-                        new OpenApiSecurityScheme 
+                        new OpenApiSecurityScheme
                         {
                         Reference = new OpenApiReference
                         {
@@ -122,7 +137,8 @@ namespace application
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => {
+            app.UseSwaggerUI(c =>
+            {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Cadastro De Series");
                 c.RoutePrefix = string.Empty;
             });
