@@ -18,6 +18,10 @@ namespace Api.Infra.Data.Context
             base.OnModelCreating (modelBuilder);
             modelBuilder.Entity<UserEntity> (new UserMap().Configure);
 
+            modelBuilder.Entity<GenreEntity> (new GenreMap().Configure);
+            modelBuilder.Entity<MovieEntity> (new MovieMap().Configure);
+            modelBuilder.Entity<UserMoviesEntity> (new UserMoviesMap().Configure);
+
             modelBuilder
                 .Entity<UserEntity>()
                 .HasData(new UserEntity {
