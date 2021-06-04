@@ -2,7 +2,7 @@ using System;
 
 namespace Api.Domain.Entities
 {
-    public class UserMoviesEntity
+    public class UserMoviesEntity : BaseEntity
     {
         public Guid UserId { get; set; }
 
