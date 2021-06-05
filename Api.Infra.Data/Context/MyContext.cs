@@ -1,6 +1,7 @@
 using System;
 using Api.Domain.Entities;
 using Api.Infra.Data.Mapping;
+using Api.Infra.Data.Seeds;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Infra.Data.Context
@@ -27,10 +28,12 @@ namespace Api.Infra.Data.Context
                 .HasData(new UserEntity {
                     Id = Guid.NewGuid(),
                     Name = "Edson Shideki Kokado",
-                    Email = "esk@email.com",
+                    Email = "eskokado@email.com",
                     CreateAt = DateTime.Now,
                     UpdateAt = DateTime.Now
                 });
+
+            GenreSeeds.Genres(modelBuilder);
         }
     }
 }
