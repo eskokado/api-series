@@ -8,16 +8,17 @@ namespace Api.Infra.Data.Context
         public MyContext CreateDbContext(string[] args)
         {
             // Usado para criar as migrações
-            // var connectionString = 
-            //     "Server=localhost;Port=3306;Database=dbApiSeries;Uid=root;Pwd=root";
+            var connectionString = 
+                "Server=localhost;Port=3306;Database=dbApiSeries;Uid=root;Pwd=root";
 
-            var connectionString =
-                "Server=(localdb)\\mssqllocaldb;Database=dbApiSeries;Trusted_Connection=True;MultipleActiveResultSets=true;user=sa;password=sa@123456";
+            // var connectionString =
+            //     "Server=(localdb)\\mssqllocaldb;Database=dbApiSeries;Trusted_Connection=True;MultipleActiveResultSets=true;user=sa;password=sa@123456";
 
             var optionsBuilder = new DbContextOptionsBuilder<MyContext> ();
 
-            // optionsBuilder.UseMySql (connectionString);
-            optionsBuilder.UseSqlServer (connectionString);
+            optionsBuilder.UseMySql (connectionString, ServerVersion.AutoDetect(connectionString));
+
+            // optionsBuilder.UseSqlServer (connectionString);
 
             return new MyContext (optionsBuilder.Options);
         }

@@ -33,7 +33,7 @@ namespace Api.Infra.Data.Implementations
         public async Task<IEnumerable<MovieEntity>> FindCompleteByNameAndDescription(string text)
         {
             return await _dataset.Include(m => m.Genre).AsQueryable()
-                                .Where(m => m.Description.Contains(text) && m.Name.Contains(text))
+                                .Where(m => m.Description.Contains(text) || m.Name.Contains(text))
                                 .ToListAsync<MovieEntity>();
         }
         public async Task<IEnumerable<MovieEntity>> FindCompleteByGenreName(string name)
