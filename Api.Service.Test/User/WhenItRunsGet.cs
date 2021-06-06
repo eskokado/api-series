@@ -15,7 +15,6 @@ namespace Api.Service.Test.User
         [Fact(DisplayName = "É possível Executar o Método GET.")]
         public async Task ItIsPossibleToRunGet() 
         {
-            var _userTest = new UserTest();
             _serviceMock = new Mock<IUserService>();
             _serviceMock.Setup(m => m.Get(UserId)).ReturnsAsync(userDtoResult);
             _service = _serviceMock.Object;
@@ -23,6 +22,8 @@ namespace Api.Service.Test.User
             var result = await _service.Get(UserId);
             Assert.NotNull(result);
             Assert.True(result.Id == UserId);
+            Assert.Equal(result.Name, UserName);
+            Assert.Equal(result.Email, UserEmail);
 
             _serviceMock = new Mock<IUserService>();
             _serviceMock.Setup(m => m.Get(It.IsAny<Guid>())).Returns(Task.FromResult((UserDtoResult) null));
