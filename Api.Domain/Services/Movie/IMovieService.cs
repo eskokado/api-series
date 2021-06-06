@@ -9,8 +9,13 @@ namespace Api.Domain.Services.Movie
     {
         Task<MovieDtoResult> Get (Guid id);
         Task<IEnumerable<MovieDtoResult>> GetAll();
-        Task<MovieDtoCreateResult> Post(MovieDtoCreate user);
-        Task<MovieDtoUpdateResult> Put(MovieDtoUpdate user);
+        Task<MovieDtoCreateResult> Post(MovieDtoCreate dto);
+        Task<MovieDtoUpdateResult> Put(MovieDtoUpdate dto);
         Task<bool> Delete(Guid id);          
+        Task<IEnumerable<MovieDtoResult>> FindCompleteByName(string name);
+        Task<IEnumerable<MovieDtoResult>> FindCompleteByDescription(string description);
+        Task<IEnumerable<MovieDtoResult>> FindCompleteByNameAndDescription(string text);
+        Task<IEnumerable<MovieDtoResult>> FindCompleteByGenreName(string name);
+
     }
 }

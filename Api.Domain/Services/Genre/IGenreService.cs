@@ -9,8 +9,9 @@ namespace Api.Domain.Services.Genre
     {
         Task<GenreDtoResult> Get (Guid id);
         Task<IEnumerable<GenreDtoResult>> GetAll();
-        Task<GenreDtoCreateResult> Post(GenreDtoCreate user);
-        Task<GenreDtoUpdateResult> Put(GenreDtoUpdate user);
+        Task<GenreDtoCreateResult> Post(GenreDtoCreate dto);
+        Task<GenreDtoUpdateResult> Put(GenreDtoUpdate dto);
         Task<bool> Delete(Guid id);          
+        Task<IEnumerable<GenreDtoResult>> FindByName(string name);
     }
 }
