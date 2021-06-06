@@ -7,6 +7,6 @@ namespace Api.Domain.Dtos.Genre
         public Guid Id { get; set; }
         public string Name { get; set; }
         public DateTime CreateAt { get; set; }
-        public DateTime Update { get; set; }
+        public DateTime UpdateAt { get; set; }
     }
 }
