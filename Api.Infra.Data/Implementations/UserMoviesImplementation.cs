@@ -20,13 +20,15 @@ namespace Api.Infra.Data.Implementations
 
         public async Task<IEnumerable<UserMoviesEntity>> FindCompleteByMovieName(string name)
         {
-            return await _dataset.Include(um => um.Movie).Include(um => um.User).AsQueryable()
+            return await _dataset.Include(um => um.Movie).ThenInclude(m => m.Genre)
+                                .Include(um => um.User).AsQueryable()
                                 .Where(um => um.Movie.Name.Contains(name)).ToListAsync<UserMoviesEntity>();
         }
 
         public async Task<IEnumerable<UserMoviesEntity>> FindCompleteByUserName(string name)
         {
-            return await _dataset.Include(um => um.Movie).Include(um => um.User).AsQueryable()
+            return await _dataset.Include(um => um.Movie).ThenInclude(m => m.Genre)
+                                .Include(um => um.User).AsQueryable()
                                 .Where(um => um.User.Name.Contains(name)).ToListAsync<UserMoviesEntity>();
         }
     }
