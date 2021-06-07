@@ -13,6 +13,9 @@ namespace Api.Infra.CrossCutting.DependencyInjection
         {
             serviceCollection.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
             serviceCollection.AddScoped<IUserRepository, UserImplementation>();
+            serviceCollection.AddScoped<IGenreRepository, GenreImplementation>();
+            serviceCollection.AddScoped<IMovieRepository, MovieImplementation>();
+            serviceCollection.AddScoped<IUserMoviesRepository, UserMoviesImplementation>();
             
             serviceCollection.AddDbContext<MyContext> (
                 options => 
