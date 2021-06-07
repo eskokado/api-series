@@ -17,12 +17,18 @@ namespace Api.Infra.CrossCutting.DependencyInjection
             serviceCollection.AddScoped<IMovieRepository, MovieImplementation>();
             serviceCollection.AddScoped<IUserMoviesRepository, UserMoviesImplementation>();
             
+            var connectionString = 
+                "Server=localhost;Port=3306;Database=dbApiSeries;Uid=root;Pwd=root";
+
+            // var connectionString =
+            //     "Server=(localdb)\\mssqllocaldb;Database=dbApiSeries;Trusted_Connection=True;MultipleActiveResultSets=true;user=sa;password=sa@123456";
+
             serviceCollection.AddDbContext<MyContext> (
                 options => 
                 
-                // options.UseMySql("Server=localhost;Port=3306;Database=dbApiSeries;Uid=root;Pwd=root")
-                options
-                    .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=dbApiSeries;Trusted_Connection=True;MultipleActiveResultSets=true;user=sa;password=sa@123456")
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+                // options
+                //     .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=dbApiSeries;Trusted_Connection=True;MultipleActiveResultSets=true;user=sa;password=sa@123456")
             );
         }        
     }
