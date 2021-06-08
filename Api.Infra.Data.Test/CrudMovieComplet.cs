@@ -55,8 +55,16 @@ namespace Api.Infra.Data.Test
                 var _find_by_name_description = await _repositorio.FindCompleteByNameAndDescription("a");
                 Assert.True(_find_by_name_description.Count() > 0);
 
-                var _find_by_name = await _repositorio.FindCompleteByName("a");
-                Assert.True(_find_by_name.Count() > 0);
+                var _find_by_name_a = await _repositorio.FindCompleteByName("a");
+                var _find_by_name_e = await _repositorio.FindCompleteByName("e");
+                var _find_by_name_i = await _repositorio.FindCompleteByName("i");
+                var _find_by_name_o = await _repositorio.FindCompleteByName("o");
+                Assert.True(
+                    _find_by_name_a.Count() > 0 ||
+                    _find_by_name_e.Count() > 0 ||
+                    _find_by_name_i.Count() > 0 ||
+                    _find_by_name_o.Count() > 0
+                );
 
                 var _find_by_genre_name = await _repositorio.FindCompleteByGenreName("ma");
                 Assert.True(_find_by_genre_name.Count() > 0);

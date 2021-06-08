@@ -60,11 +60,27 @@ namespace Api.Infra.Data.Test
                 var _record_exists = await _repositorio.ExistAsync(_entity.Id);
                 Assert.True(_record_exists);
 
-                var _find_by_movie_name = await _repositorio.FindCompleteByMovieName("a");
-                Assert.True(_find_by_movie_name.Count() > 0);
+                var _find_by_movie_name_a = await _repositorio.FindCompleteByMovieName("a");
+                var _find_by_movie_name_e = await _repositorio.FindCompleteByMovieName("e");
+                var _find_by_movie_name_i = await _repositorio.FindCompleteByMovieName("i");
+                var _find_by_movie_name_o = await _repositorio.FindCompleteByMovieName("o");
+                Assert.True(
+                    _find_by_movie_name_a.Count() > 0 ||
+                    _find_by_movie_name_e.Count() > 0 ||
+                    _find_by_movie_name_i.Count() > 0 ||
+                    _find_by_movie_name_o.Count() > 0
+                );
 
-                var _find_by_user_name = await _repositorio.FindCompleteByUserName("a");
-                Assert.True(_find_by_user_name.Count() > 0);
+                var _find_by_user_name_a = await _repositorio.FindCompleteByUserName("a");
+                var _find_by_user_name_e = await _repositorio.FindCompleteByUserName("a");
+                var _find_by_user_name_i = await _repositorio.FindCompleteByUserName("a");
+                var _find_by_user_name_o = await _repositorio.FindCompleteByUserName("a");
+                Assert.True(
+                    _find_by_user_name_a.Count() > 0 ||
+                    _find_by_user_name_e.Count() > 0 ||
+                    _find_by_user_name_i.Count() > 0 ||
+                    _find_by_user_name_o.Count() > 0
+                );
 
                 var _selected = await _repositorio.SelectAsync(_entity.Id);
                 Assert.Equal(_entity, _selected);

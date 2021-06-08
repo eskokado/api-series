@@ -16,7 +16,7 @@ namespace Api.Service.Test.Movie
         public async Task ItIsPossibleToRunGetMovie() 
         {
             _serviceMock = new Mock<IMovieService>();
-            _serviceMock.Setup(m => m.Get(MovieId)).ReturnsAsync(movieDtoResult);
+            _serviceMock.Setup(m => m.Get(It.IsAny<Guid>())).ReturnsAsync(movieDtoResult);
             _service = _serviceMock.Object;
 
             var result = await _service.Get(MovieId);

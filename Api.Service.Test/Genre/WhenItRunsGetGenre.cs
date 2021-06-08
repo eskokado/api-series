@@ -16,7 +16,7 @@ namespace Api.Service.Test.Genre
         public async Task ItIsPossibleToRunGetGenre() 
         {
             _serviceMock = new Mock<IGenreService>();
-            _serviceMock.Setup(m => m.Get(GenreId)).ReturnsAsync(genreDtoResult);
+            _serviceMock.Setup(m => m.Get(It.IsAny<Guid>())).ReturnsAsync(genreDtoResult);
             _service = _serviceMock.Object;
 
             var result = await _service.Get(GenreId);
