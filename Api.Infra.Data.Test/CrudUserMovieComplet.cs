@@ -72,9 +72,9 @@ namespace Api.Infra.Data.Test
                 );
 
                 var _find_by_user_name_a = await _repositorio.FindCompleteByUserName("a");
-                var _find_by_user_name_e = await _repositorio.FindCompleteByUserName("a");
-                var _find_by_user_name_i = await _repositorio.FindCompleteByUserName("a");
-                var _find_by_user_name_o = await _repositorio.FindCompleteByUserName("a");
+                var _find_by_user_name_e = await _repositorio.FindCompleteByUserName("e");
+                var _find_by_user_name_i = await _repositorio.FindCompleteByUserName("i");
+                var _find_by_user_name_o = await _repositorio.FindCompleteByUserName("o");
                 Assert.True(
                     _find_by_user_name_a.Count() > 0 ||
                     _find_by_user_name_e.Count() > 0 ||

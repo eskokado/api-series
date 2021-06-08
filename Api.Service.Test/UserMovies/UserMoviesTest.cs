@@ -6,8 +6,8 @@ namespace Api.Service.Test.UserMovies
 {
     public class UserMoviesTest
     {
-        public static Guid UserMoviesUserId { get; set; }
-        public static Guid UserMoviesMovieId { get; set; }
+        public Guid UserMoviesUserId { get; set; }
+        public Guid UserMoviesMovieId { get; set; }
         public Guid UserMoviesId { get; set; }
 
         public List<UserMoviesDtoResult> listUserMoviesDto = new List<UserMoviesDtoResult>();

@@ -6,10 +6,10 @@ namespace Api.Service.Test.User
 {
     public class UserTest
     {
-        public static string UserName { get; set; }
-        public static string UserEmail { get; set; }
-        public static string UserNameUpdate { get; set; }
-        public static string UserEmailUpdate { get; set; }
+        public string UserName { get; set; }
+        public string UserEmail { get; set; }
+        public string UserNameUpdate { get; set; }
+        public string UserEmailUpdate { get; set; }
         public Guid UserId { get; set; }
 
         public List<UserDtoResult> listUserDto = new List<UserDtoResult>();

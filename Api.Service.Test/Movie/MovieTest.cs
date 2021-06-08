@@ -6,12 +6,12 @@ namespace Api.Service.Test.Movie
 {
     public class MovieTest
     {
-        public static string MovieName { get; set; }
-        public static string MovieDescription { get; set; }
-        public static Guid MovieGenreId { get; set; }
-        public static string MovieNameUpdate { get; set; }
-        public static string MovieDescriptionUpdate { get; set; }
-        public static Guid MovieGenreIdUpdate { get; set; }
+        public string MovieName { get; set; }
+        public string MovieDescription { get; set; }
+        public Guid MovieGenreId { get; set; }
+        public string MovieNameUpdate { get; set; }
+        public string MovieDescriptionUpdate { get; set; }
+        public Guid MovieGenreIdUpdate { get; set; }
         public Guid MovieId { get; set; }
 
         public List<MovieDtoResult> listMovieDto = new List<MovieDtoResult>();

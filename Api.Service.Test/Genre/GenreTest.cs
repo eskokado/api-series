@@ -6,8 +6,8 @@ namespace Api.Service.Test.Genre
 {
     public class GenreTest
     {
-        public static string GenreName { get; set; }
-        public static string GenreNameUpdate { get; set; }
+        public string GenreName { get; set; }
+        public string GenreNameUpdate { get; set; }
         public Guid GenreId { get; set; }
 
         public List<GenreDtoResult> listGenreDto = new List<GenreDtoResult>();
