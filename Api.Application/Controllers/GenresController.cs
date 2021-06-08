@@ -63,6 +63,7 @@ namespace Api.Application.Controllers
             }
         }
 
+        [Authorize("Bearer")]
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] GenreDtoCreate dto) 
         {
@@ -134,7 +135,7 @@ namespace Api.Application.Controllers
 
         [Authorize("Bearer")]
         [HttpGet]
-        [Route("find/{name}")]
+        [Route("findByName/{name}")]
         public async Task<ActionResult> FindByName(string name) 
         {
             if (!ModelState.IsValid) 

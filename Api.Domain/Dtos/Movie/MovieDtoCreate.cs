@@ -10,7 +10,6 @@ namespace Api.Domain.Dtos.Movie
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Descrição é campo obrigatório")]
-        [StringLength(255, ErrorMessage = "Descrição deve ter no máximo {1} caracteres")]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Id de Genêro é campo obrigatório")]
