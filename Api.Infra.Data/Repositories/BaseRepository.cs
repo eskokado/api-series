@@ -21,7 +21,7 @@ namespace Api.Infra.Data.Repositories
         {
         try
         {
-            if (item.Id == Guid.Empty) {
+            if (item.Id == Guid.Empty || item.Id == new Guid("00000000-0000-0000-0000-000000000000")) {
                 item.Id = Guid.NewGuid();
             }
             item.CreateAt = DateTime.UtcNow;
