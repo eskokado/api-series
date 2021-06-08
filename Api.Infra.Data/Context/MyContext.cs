@@ -23,16 +23,7 @@ namespace Api.Infra.Data.Context
             modelBuilder.Entity<MovieEntity> (new MovieMap().Configure);
             modelBuilder.Entity<UserMoviesEntity> (new UserMoviesMap().Configure);
 
-            modelBuilder
-                .Entity<UserEntity>()
-                .HasData(new UserEntity {
-                    Id = Guid.NewGuid(),
-                    Name = "Edson Shideki Kokado",
-                    Email = "eskokado@email.com",
-                    CreateAt = DateTime.Now,
-                    UpdateAt = DateTime.Now
-                });
-
+            UserSeeds.Users(modelBuilder);
             GenreSeeds.Genres(modelBuilder);
         }
     }

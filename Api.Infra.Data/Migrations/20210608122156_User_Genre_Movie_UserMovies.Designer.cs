@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20210605140108_user_genre_movie_usermovies")]
-    partial class user_genre_movie_usermovies
+    [Migration("20210608122156_User_Genre_Movie_UserMovies")]
+    partial class User_Genre_Movie_UserMovies
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,31 +47,31 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("22ffbd18-cdb9-45cc-97b0-51e97700bf71"),
-                            CreateAt = new DateTime(2021, 6, 5, 14, 1, 7, 268, DateTimeKind.Utc).AddTicks(8606),
+                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 243, DateTimeKind.Utc).AddTicks(5513),
                             Name = "Romance"
                         },
                         new
                         {
                             Id = new Guid("7cc33300-586e-4be8-9a4d-bd9f01ee9ad8"),
-                            CreateAt = new DateTime(2021, 6, 5, 14, 1, 7, 268, DateTimeKind.Utc).AddTicks(8697),
+                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 243, DateTimeKind.Utc).AddTicks(5664),
                             Name = "Drama"
                         },
                         new
                         {
                             Id = new Guid("cb9e6888-2094-45ee-bc44-37ced33c693a"),
-                            CreateAt = new DateTime(2021, 6, 5, 14, 1, 7, 268, DateTimeKind.Utc).AddTicks(8704),
+                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 243, DateTimeKind.Utc).AddTicks(5679),
                             Name = "Ficção"
                         },
                         new
                         {
                             Id = new Guid("409b9043-88a4-4e86-9cca-ca1fb0d0d35b"),
-                            CreateAt = new DateTime(2021, 6, 5, 14, 1, 7, 268, DateTimeKind.Utc).AddTicks(8709),
+                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 243, DateTimeKind.Utc).AddTicks(5688),
                             Name = "Aventura"
                         },
                         new
                         {
                             Id = new Guid("5abca453-d035-4766-a81b-9f73d683a54b"),
-                            CreateAt = new DateTime(2021, 6, 5, 14, 1, 7, 268, DateTimeKind.Utc).AddTicks(8714),
+                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 243, DateTimeKind.Utc).AddTicks(5697),
                             Name = "Terror"
                         });
                 });
@@ -140,11 +140,35 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("80e38993-7440-46a1-90d5-237bff98521a"),
-                            CreateAt = new DateTime(2021, 6, 5, 11, 1, 7, 265, DateTimeKind.Local).AddTicks(4195),
+                            Id = new Guid("8037d515-63e7-415f-bc89-35df0801872d"),
+                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 237, DateTimeKind.Utc).AddTicks(7557),
+                            Email = "user@example.com",
+                            Name = "User Padrão",
+                            UpdateAt = new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(1251)
+                        },
+                        new
+                        {
+                            Id = new Guid("b74236f8-9f4b-4536-88ac-4a286f1b75cb"),
+                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2614),
                             Email = "eskokado@email.com",
                             Name = "Edson Shideki Kokado",
-                            UpdateAt = new DateTime(2021, 6, 5, 11, 1, 7, 265, DateTimeKind.Local).AddTicks(7302)
+                            UpdateAt = new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2651)
+                        },
+                        new
+                        {
+                            Id = new Guid("9b4d0f6f-b4ef-4f4e-9329-ff05fd738c76"),
+                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2681),
+                            Email = "mariasilva@email.com",
+                            Name = "Maria da Silva",
+                            UpdateAt = new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2687)
+                        },
+                        new
+                        {
+                            Id = new Guid("630c70a5-06de-4310-957c-7d1dd4f72724"),
+                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2693),
+                            Email = "josesouza@email.com",
+                            Name = "José Souza",
+                            UpdateAt = new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2696)
                         });
                 });
 

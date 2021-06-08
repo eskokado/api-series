@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.Migrations
 {
-    public partial class user_genre_movie_usermovies : Migration
+    public partial class User_Genre_Movie_UserMovies : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -102,17 +102,23 @@ namespace Data.Migrations
                 columns: new[] { "Id", "CreateAt", "Name", "UpdateAt" },
                 values: new object[,]
                 {
-                    { new Guid("22ffbd18-cdb9-45cc-97b0-51e97700bf71"), new DateTime(2021, 6, 5, 14, 1, 7, 268, DateTimeKind.Utc).AddTicks(8606), "Romance", null },
-                    { new Guid("7cc33300-586e-4be8-9a4d-bd9f01ee9ad8"), new DateTime(2021, 6, 5, 14, 1, 7, 268, DateTimeKind.Utc).AddTicks(8697), "Drama", null },
-                    { new Guid("cb9e6888-2094-45ee-bc44-37ced33c693a"), new DateTime(2021, 6, 5, 14, 1, 7, 268, DateTimeKind.Utc).AddTicks(8704), "Ficção", null },
-                    { new Guid("409b9043-88a4-4e86-9cca-ca1fb0d0d35b"), new DateTime(2021, 6, 5, 14, 1, 7, 268, DateTimeKind.Utc).AddTicks(8709), "Aventura", null },
-                    { new Guid("5abca453-d035-4766-a81b-9f73d683a54b"), new DateTime(2021, 6, 5, 14, 1, 7, 268, DateTimeKind.Utc).AddTicks(8714), "Terror", null }
+                    { new Guid("22ffbd18-cdb9-45cc-97b0-51e97700bf71"), new DateTime(2021, 6, 8, 12, 21, 55, 243, DateTimeKind.Utc).AddTicks(5513), "Romance", null },
+                    { new Guid("7cc33300-586e-4be8-9a4d-bd9f01ee9ad8"), new DateTime(2021, 6, 8, 12, 21, 55, 243, DateTimeKind.Utc).AddTicks(5664), "Drama", null },
+                    { new Guid("cb9e6888-2094-45ee-bc44-37ced33c693a"), new DateTime(2021, 6, 8, 12, 21, 55, 243, DateTimeKind.Utc).AddTicks(5679), "Ficção", null },
+                    { new Guid("409b9043-88a4-4e86-9cca-ca1fb0d0d35b"), new DateTime(2021, 6, 8, 12, 21, 55, 243, DateTimeKind.Utc).AddTicks(5688), "Aventura", null },
+                    { new Guid("5abca453-d035-4766-a81b-9f73d683a54b"), new DateTime(2021, 6, 8, 12, 21, 55, 243, DateTimeKind.Utc).AddTicks(5697), "Terror", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "CreateAt", "Email", "Name", "UpdateAt" },
-                values: new object[] { new Guid("80e38993-7440-46a1-90d5-237bff98521a"), new DateTime(2021, 6, 5, 11, 1, 7, 265, DateTimeKind.Local).AddTicks(4195), "eskokado@email.com", "Edson Shideki Kokado", new DateTime(2021, 6, 5, 11, 1, 7, 265, DateTimeKind.Local).AddTicks(7302) });
+                values: new object[,]
+                {
+                    { new Guid("8037d515-63e7-415f-bc89-35df0801872d"), new DateTime(2021, 6, 8, 12, 21, 55, 237, DateTimeKind.Utc).AddTicks(7557), "user@example.com", "User Padrão", new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(1251) },
+                    { new Guid("b74236f8-9f4b-4536-88ac-4a286f1b75cb"), new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2614), "eskokado@email.com", "Edson Shideki Kokado", new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2651) },
+                    { new Guid("9b4d0f6f-b4ef-4f4e-9329-ff05fd738c76"), new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2681), "mariasilva@email.com", "Maria da Silva", new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2687) },
+                    { new Guid("630c70a5-06de-4310-957c-7d1dd4f72724"), new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2693), "josesouza@email.com", "José Souza", new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2696) }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Genres_Name",
