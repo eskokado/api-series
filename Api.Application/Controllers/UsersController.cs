@@ -63,6 +63,7 @@ namespace Api.Application.Controllers
             }
         }
 
+        [Authorize("Bearer")]
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] UserDtoCreate user) 
         {
@@ -131,5 +132,26 @@ namespace Api.Application.Controllers
                 return StatusCode ((int) HttpStatusCode.InternalServerError, e.Message);
             }
         }
+
+        [Authorize("Bearer")]
+        [HttpGet]
+        [Route("findByName/{name}")]
+        public async Task<ActionResult> FindByName(string name) 
+        {
+            if (!ModelState.IsValid) 
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                return Ok(await _service.FindByName(name));
+            }
+            catch (ArgumentException e)
+            {
+                return StatusCode ((int) HttpStatusCode.InternalServerError, e.Message);
+            }
+        }
+
     }
 }

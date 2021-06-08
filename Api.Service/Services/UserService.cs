@@ -24,6 +24,12 @@ namespace Api.Service.Services
             return await _repository.DeleteAsync(id);
         }
 
+        public async Task<IEnumerable<UserDtoResult>> FindByName(string name)
+        {
+            var entities = await _repository.FindByName(name);
+            return _mapper.Map<IEnumerable<UserDtoResult>> (entities);
+        }
+
         public async Task<UserDtoResult> Get(Guid id)
         {
             var entity = await _repository.SelectAsync(id);

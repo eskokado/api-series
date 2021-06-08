@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Api.Domain.Entities;
 using Api.Domain.Repositories;
@@ -19,6 +21,11 @@ namespace Api.Infra.Data.Implementations
         public async Task<UserEntity> FindByLogin(string email)
         {
             return await _dataset.FirstOrDefaultAsync(u => u.Email.Equals(email));
+        }
+
+        public async Task<IEnumerable<UserEntity>> FindByName(string name)
+        {
+            return await _dataset.AsQueryable().Where(u => u.Name.Contains(name)).ToListAsync<UserEntity>();
         }
     }
 }

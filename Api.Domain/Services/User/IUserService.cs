@@ -12,5 +12,7 @@ namespace Api.Domain.Services.User
         Task<UserDtoCreateResult> Post(UserDtoCreate dto);
         Task<UserDtoUpdateResult> Put(UserDtoUpdate dto);
         Task<bool> Delete(Guid id);          
+        Task<IEnumerable<UserDtoResult>> FindByName(string name);
+
     }
 }
