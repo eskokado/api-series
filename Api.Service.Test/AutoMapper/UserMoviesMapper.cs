@@ -33,7 +33,7 @@ namespace Api.Service.Test.AutoMapper
                 {
                     Id = Guid.NewGuid(),
                     Name = Faker.Name.FullName(),
-                    Description = Faker.Lorem.Sentence(100),
+                    Description = Faker.Lorem.Sentence(25),
                 },
                 User = new UserEntity
                 {
@@ -57,7 +57,7 @@ namespace Api.Service.Test.AutoMapper
                     {
                         Id = Guid.NewGuid(),
                         Name = Faker.Name.FullName(),
-                        Description = Faker.Lorem.Sentence(100),
+                        Description = Faker.Lorem.Sentence(25),
                     },
                     User = new UserEntity
                     {

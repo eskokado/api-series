@@ -19,7 +19,7 @@ namespace Api.Application.Test.Movie.WhenToRequestUpdate
             var serviceMock = new Mock<IMovieService>();
             var id = Guid.NewGuid();
             var name = Faker.Name.FullName();
-            var description = Faker.Lorem.Sentence(100);
+            var description = Faker.Lorem.Sentence(25);
             var genreId = Guid.NewGuid();
 
             serviceMock.Setup(m => m.Put(It.IsAny<MovieDtoUpdate>())).ReturnsAsync(

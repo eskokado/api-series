@@ -26,10 +26,10 @@ namespace Api.Service.Test.Movie
         {
             MovieId = Guid.NewGuid();
             MovieName = Faker.Name.FullName();
-            MovieDescription = Faker.Lorem.Sentence(100);
+            MovieDescription = Faker.Lorem.Sentence(25);
             MovieGenreId = Guid.NewGuid();
             MovieNameUpdate = Faker.Name.FullName();
-            MovieDescriptionUpdate = Faker.Lorem.Sentence(100);
+            MovieDescriptionUpdate = Faker.Lorem.Sentence(25);
             MovieGenreIdUpdate = Guid.NewGuid();
 
             for (int i = 0; i < 10; i++)
@@ -38,7 +38,7 @@ namespace Api.Service.Test.Movie
                 {
                     Id = Guid.NewGuid(),
                     Name = Faker.Name.FullName(),
-                    Description = Faker.Lorem.Sentence(100),
+                    Description = Faker.Lorem.Sentence(25),
                     GenreId = Guid.NewGuid(),
                     CreateAt = DateTime.UtcNow,
                     UpdateAt = DateTime.UtcNow

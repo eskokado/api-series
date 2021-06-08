@@ -27,7 +27,7 @@ namespace Api.Application.Test.Movie.WhenToRequestFindCompleteByGenreName
                     {
                         Id = Guid.NewGuid(),
                         Name = Faker.Name.FullName(),
-                        Description = Faker.Lorem.Sentence(100),
+                        Description = Faker.Lorem.Sentence(25),
                         GenreId = Guid.NewGuid(),
                         CreateAt = DateTime.UtcNow,
                         UpdateAt = DateTime.UtcNow
@@ -36,7 +36,7 @@ namespace Api.Application.Test.Movie.WhenToRequestFindCompleteByGenreName
                     {
                         Id = Guid.NewGuid(),
                         Name = Faker.Name.FullName(),
-                        Description = Faker.Lorem.Sentence(100),
+                        Description = Faker.Lorem.Sentence(25),
                         GenreId = Guid.NewGuid(),
                         CreateAt = DateTime.UtcNow,
                         UpdateAt = DateTime.UtcNow
@@ -45,7 +45,7 @@ namespace Api.Application.Test.Movie.WhenToRequestFindCompleteByGenreName
                     {
                         Id = Guid.NewGuid(),
                         Name = Faker.Name.FullName(),
-                        Description = Faker.Lorem.Sentence(100),
+                        Description = Faker.Lorem.Sentence(25),
                         GenreId = Guid.NewGuid(),
                         CreateAt = DateTime.UtcNow,
                         UpdateAt = DateTime.UtcNow
