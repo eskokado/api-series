@@ -3,6 +3,7 @@ using System;
 using Api.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Migrations
@@ -14,25 +15,26 @@ namespace Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.5");
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("ProductVersion", "5.0.5")
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Api.Domain.Entities.GenreEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CreateAt")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<DateTime?>("UpdateAt")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -45,31 +47,31 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("22ffbd18-cdb9-45cc-97b0-51e97700bf71"),
-                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 243, DateTimeKind.Utc).AddTicks(5513),
+                            CreateAt = new DateTime(2022, 1, 10, 10, 31, 37, 937, DateTimeKind.Utc).AddTicks(8988),
                             Name = "Romance"
                         },
                         new
                         {
                             Id = new Guid("7cc33300-586e-4be8-9a4d-bd9f01ee9ad8"),
-                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 243, DateTimeKind.Utc).AddTicks(5664),
+                            CreateAt = new DateTime(2022, 1, 10, 10, 31, 37, 937, DateTimeKind.Utc).AddTicks(9104),
                             Name = "Drama"
                         },
                         new
                         {
                             Id = new Guid("cb9e6888-2094-45ee-bc44-37ced33c693a"),
-                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 243, DateTimeKind.Utc).AddTicks(5679),
+                            CreateAt = new DateTime(2022, 1, 10, 10, 31, 37, 937, DateTimeKind.Utc).AddTicks(9112),
                             Name = "Ficção"
                         },
                         new
                         {
                             Id = new Guid("409b9043-88a4-4e86-9cca-ca1fb0d0d35b"),
-                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 243, DateTimeKind.Utc).AddTicks(5688),
+                            CreateAt = new DateTime(2022, 1, 10, 10, 31, 37, 937, DateTimeKind.Utc).AddTicks(9118),
                             Name = "Aventura"
                         },
                         new
                         {
                             Id = new Guid("5abca453-d035-4766-a81b-9f73d683a54b"),
-                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 243, DateTimeKind.Utc).AddTicks(5697),
+                            CreateAt = new DateTime(2022, 1, 10, 10, 31, 37, 937, DateTimeKind.Utc).AddTicks(9123),
                             Name = "Terror"
                         });
                 });
@@ -78,24 +80,24 @@ namespace Data.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CreateAt")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("GenreId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<DateTime?>("UpdateAt")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -111,81 +113,82 @@ namespace Data.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CreateAt")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<DateTime?>("UpdateAt")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Email")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[Email] IS NOT NULL");
 
                     b.ToTable("Users");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8037d515-63e7-415f-bc89-35df0801872d"),
-                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 237, DateTimeKind.Utc).AddTicks(7557),
+                            Id = new Guid("cdc250e7-cb74-4b4a-84f4-8fb3e855feb9"),
+                            CreateAt = new DateTime(2022, 1, 10, 10, 31, 37, 935, DateTimeKind.Utc).AddTicks(2737),
                             Email = "user@example.com",
                             Name = "User Padrão",
-                            UpdateAt = new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(1251)
+                            UpdateAt = new DateTime(2022, 1, 10, 10, 31, 37, 935, DateTimeKind.Utc).AddTicks(4447)
                         },
                         new
                         {
-                            Id = new Guid("b74236f8-9f4b-4536-88ac-4a286f1b75cb"),
-                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2614),
+                            Id = new Guid("0b564777-907c-4494-8c5c-5f7b31482301"),
+                            CreateAt = new DateTime(2022, 1, 10, 10, 31, 37, 935, DateTimeKind.Utc).AddTicks(5211),
                             Email = "eskokado@email.com",
                             Name = "Edson Shideki Kokado",
-                            UpdateAt = new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2651)
+                            UpdateAt = new DateTime(2022, 1, 10, 10, 31, 37, 935, DateTimeKind.Utc).AddTicks(5239)
                         },
                         new
                         {
-                            Id = new Guid("9b4d0f6f-b4ef-4f4e-9329-ff05fd738c76"),
-                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2681),
+                            Id = new Guid("e3e06d25-b04c-409a-9170-585f112df5a0"),
+                            CreateAt = new DateTime(2022, 1, 10, 10, 31, 37, 935, DateTimeKind.Utc).AddTicks(5259),
                             Email = "mariasilva@email.com",
                             Name = "Maria da Silva",
-                            UpdateAt = new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2687)
+                            UpdateAt = new DateTime(2022, 1, 10, 10, 31, 37, 935, DateTimeKind.Utc).AddTicks(5261)
                         },
                         new
                         {
-                            Id = new Guid("630c70a5-06de-4310-957c-7d1dd4f72724"),
-                            CreateAt = new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2693),
+                            Id = new Guid("34ce0948-e28f-43d5-9039-ff2e81cc066f"),
+                            CreateAt = new DateTime(2022, 1, 10, 10, 31, 37, 935, DateTimeKind.Utc).AddTicks(5266),
                             Email = "josesouza@email.com",
                             Name = "José Souza",
-                            UpdateAt = new DateTime(2021, 6, 8, 12, 21, 55, 238, DateTimeKind.Utc).AddTicks(2696)
+                            UpdateAt = new DateTime(2022, 1, 10, 10, 31, 37, 935, DateTimeKind.Utc).AddTicks(5268)
                         });
                 });
 
             modelBuilder.Entity("Api.Domain.Entities.UserMoviesEntity", b =>
                 {
                     b.Property<Guid>("UserId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("MovieId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CreateAt")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid>("Id")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("UpdateAt")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("UserId", "MovieId");
 

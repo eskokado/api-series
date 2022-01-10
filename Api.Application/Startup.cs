@@ -31,10 +31,10 @@ namespace application
         {
             if (_environment.IsEnvironment("Testing"))
             {
-                Environment.SetEnvironmentVariable("DB_CONNECTION", "Persist Security Info=True;Server=localhost;Port=3306;Database=dbApiSeries_Integration;Uid=root;Pwd=root");
-                Environment.SetEnvironmentVariable("DATABASE", "MYSQL");
-                //Environment.SetEnvironmentVariable("DB_CONNECTION", "Persist Security Info=True;Server=(localdb)\\mssqllocaldb;Database=dbApiSeries_Integration;Trusted_Connection=True;MultipleActiveResultSets=true;user=sa;password=sa@123456");
-                //Environment.SetEnvironmentVariable("DATABASE", "SQLSERVER");
+                //Environment.SetEnvironmentVariable("DB_CONNECTION", "Persist Security Info=True;Server=localhost;Port=3306;Database=dbApiSeries_Integration;Uid=root;Pwd=root");
+                //Environment.SetEnvironmentVariable("DATABASE", "MYSQL");
+                Environment.SetEnvironmentVariable("DB_CONNECTION", "Persist Security Info=True;Server=(localdb)\\mssqllocaldb;Database=dbApiSeries_Integration;Trusted_Connection=True;MultipleActiveResultSets=true");
+                Environment.SetEnvironmentVariable("DATABASE", "SQLSERVER");
                 Environment.SetEnvironmentVariable("MIGRATION", "APLICAR");
                 Environment.SetEnvironmentVariable("Audience", "ExampleApiSeriesAudience");
                 Environment.SetEnvironmentVariable("Issuer", "ExampleApiSeriesIssuer");

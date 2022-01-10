@@ -18,20 +18,20 @@ namespace Api.Infra.Data.Test
         public DbTest()
         {
             // Connection MySql
+            //var connectionString =
+            //    $"Persist Security Info=True;Server=localhost;Database={dataBaseName};User=root;Password=root";
             var connectionString =
-                $"Persist Security Info=True;Server=localhost;Database={dataBaseName};User=root;Password=root";
-            // var connectionString =
-            //     "Persist Security Info=True;Server=(localdb)\\mssqllocaldb;Database={dataBaseName};Trusted_Connection=True;MultipleActiveResultSets=true;user=sa;password=sa@123456";
+                "Persist Security Info=True;Server=(localdb)\\mssqllocaldb;Database={dataBaseName};Trusted_Connection=True;MultipleActiveResultSets=true";
 
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddDbContext<MyContext>(o => 
-                o.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)),
+            //serviceCollection.AddDbContext<MyContext>(o => 
+            //    o.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)),
+            //    ServiceLifetime.Transient
+            //);
+            serviceCollection.AddDbContext<MyContext>(o =>
+                o.UseSqlServer(connectionString),
                 ServiceLifetime.Transient
             );
-            // serviceCollection.AddDbContext<MyContext>(o => 
-            //     o.UseSqlServer(connectionString),
-            //     ServiceLifetime.Transient
-            // );
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
             using (var context = ServiceProvider.GetService<MyContext>())

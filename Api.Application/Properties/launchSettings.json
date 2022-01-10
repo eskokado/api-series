@@ -15,7 +15,7 @@
       "launchUrl": "",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "DATABASE": "MYSQL"
+        "DATABASE": "SQLSERVER"
       }
     },
     "application": {
