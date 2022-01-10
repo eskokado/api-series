@@ -31,7 +31,13 @@ namespace Api.Integration.Test
             var server = new TestServer(builder);
 
             myContext = server.Host.Services.GetService(typeof(MyContext)) as MyContext;
-            myContext.Database.Migrate();
+            try
+            {
+                myContext.Database.Migrate();
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
 
             mapper = new AutoMapperFixture().GetMapper();
 

@@ -33,7 +33,7 @@ namespace application
             {
                 //Environment.SetEnvironmentVariable("DB_CONNECTION", "Persist Security Info=True;Server=localhost;Port=3306;Database=dbApiSeries_Integration;Uid=root;Pwd=root");
                 //Environment.SetEnvironmentVariable("DATABASE", "MYSQL");
-                Environment.SetEnvironmentVariable("DB_CONNECTION", "Persist Security Info=True;Server=(localdb)\\mssqllocaldb;Database=dbApiSeries_Integration;Trusted_Connection=True;MultipleActiveResultSets=true");
+                Environment.SetEnvironmentVariable("DB_CONNECTION", "Server=(localdb)\\mssqllocaldb;Database=dbApiSeries_Integration;Trusted_Connection=True;MultipleActiveResultSets=true");
                 Environment.SetEnvironmentVariable("DATABASE", "SQLSERVER");
                 Environment.SetEnvironmentVariable("MIGRATION", "APLICAR");
                 Environment.SetEnvironmentVariable("Audience", "ExampleApiSeriesAudience");

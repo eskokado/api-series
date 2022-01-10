@@ -21,7 +21,7 @@ namespace Api.Infra.Data.Test
             //var connectionString =
             //    $"Persist Security Info=True;Server=localhost;Database={dataBaseName};User=root;Password=root";
             var connectionString =
-                "Persist Security Info=True;Server=(localdb)\\mssqllocaldb;Database={dataBaseName};Trusted_Connection=True;MultipleActiveResultSets=true";
+                $"Server=(localdb)\\mssqllocaldb;Database={dataBaseName};Trusted_Connection=True;MultipleActiveResultSets=true";
 
             var serviceCollection = new ServiceCollection();
             //serviceCollection.AddDbContext<MyContext>(o => 
